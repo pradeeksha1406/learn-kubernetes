@@ -4,26 +4,26 @@ metadata:
   name: frontend
 spec:
   containers:
-    - name: nginx
-      image: nginx
+    - name: frontend
+      image: 851725420695.dkr.ecr.us-east-1.amazonaws.com/frontend:4.0.0
 
----
-apiVersion: v1
-kind: Pod
-metadata:
-  name: backend
-spec:
-  containers:
-    - name: nginx
-      image: nginx
-
----
-
-apiVersion: v1
-kind: Pod
-metadata:
-  name: mysql
-spec:
-  containers:
-    - name: nginx
-      image: nginx
+#---
+#apiVersion: v1
+#kind: Pod
+#metadata:
+#  name: backend
+#spec:
+#  containers:
+#    - name: nginx
+#      image: nginx
+#
+#---
+#
+#apiVersion: v1
+#kind: Pod
+#metadata:
+#  name: mysql
+#spec:
+#  containers:
+#    - name: nginx
+#      image: nginx
