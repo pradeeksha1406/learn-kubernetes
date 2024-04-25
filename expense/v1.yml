@@ -16,7 +16,7 @@ metadata:
   name: backend
 spec:
   containers:
-    - name: frontend
+    - name: backend
       image: 851725420695.dkr.ecr.us-east-1.amazonaws.com/backend:4.0.0
   imagePullSecrets:
     - name: aws-ecr
