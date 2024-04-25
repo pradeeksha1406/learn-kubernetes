@@ -4,9 +4,10 @@ metadata:
   name: pod1
   labels:
     app: test1
-    annotations:
-      pod1/test1: sample
+  annotations:
+    pod1/test1: sample
 spec:
   containers:
-   - name: nginx
-     image: nginx
+    - name: nginx
+      image: nginx
+
