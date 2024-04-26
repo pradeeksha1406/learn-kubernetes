@@ -10,6 +10,7 @@ spec:
     - name: aws-ecr
 
 ---
+
 apiVersion: v1
 kind: Pod
 metadata:
@@ -21,14 +22,19 @@ spec:
   imagePullSecrets:
     - name: aws-ecr
 
-#---
-#
-#apiVersion: v1
-#kind: Pod
-#metadata:
-#  name: mysql
-#spec:
-#  containers:
-#    - name: nginx
-#      image: nginx
+----
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mysql
+  labels:
+    app: mysql
+spec:
+  containers:
+    - name: mysql
+      image: mysql:5.7
+     env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: "ExpenseApp@1"
 
