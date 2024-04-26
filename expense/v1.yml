@@ -87,6 +87,8 @@ metadata:
 spec:
   template:
     spec:
+      imagePullSecrets:
+        - name: aws-ecr
       containers:
         - name: schema
           image: 851725420695.dkr.ecr.us-east-1.amazonaws.com/expensc-schema-load:4.0.0
