@@ -8,8 +8,8 @@ spec:
       image: 851725420695.dkr.ecr.us-east-1.amazonaws.com/frontend:4.0.0
   imagePullSecrets:
     - name: aws-ecr
-
 ---
+
 apiVersion: v1
 kind: Pod
 metadata:
@@ -20,8 +20,7 @@ spec:
       image: 851725420695.dkr.ecr.us-east-1.amazonaws.com/backend:4.0.0
   imagePullSecrets:
     - name: aws-ecr
-
-----
+---
 apiVersion: v1
 kind: Pod
 metadata:
@@ -31,6 +30,5 @@ spec:
     - name: mysql
       image: mysql:5.7
       env:
-       - name: MYSQL_ROOT_PASSWORD
-         value: "ExpenseApp@1"
-
+        - name: MYSQL_ROOT_PASSWORD
+          value: "ExpenseApp@1"
