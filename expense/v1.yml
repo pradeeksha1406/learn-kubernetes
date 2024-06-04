@@ -8,97 +8,97 @@ spec:
   containers:
     - name: frontend
       image: 851725420695.dkr.ecr.us-east-1.amazonaws.com/frontend:20.0.0
-#  imagePullSecrets:
-#    - name: aws-ecr
-#---
-#apiVersion: v1
-#kind: Service
-#metadata:
-#  name: frontend
-#spec:
-#  type: NodePort
-#  selector:
-#    app: frontend
-#  ports:
-#    - protocol: TCP
-#      port: 80
-#      targetPort: 80
-#---
-#
-#apiVersion: v1
-#kind: Pod
-#metadata:
-#  name: backend
-#  labels:
-#    app: backend
-#spec:
-#  containers:
-#    - name: backend
-#      image: 851725420695.dkr.ecr.us-east-1.amazonaws.com/backend:20.0.0
-#      env:
-#        - name: DB_HOST
-#          value: mysql
-#  imagePullSecrets:
-#    - name: aws-ecr
-#---
-#apiVersion: v1
-#kind: Service
-#metadata:
-#  name: backend
-#spec:
-#  selector:
-#    app: backend
-#  ports:
-#    - protocol: TCP
-#      port: 80
-#      targetPort: 8080
-#---
-#apiVersion: v1
-#kind: Pod
-#metadata:
-#  name: mysql
-#  labels:
-#    app: mysql
-#spec:
-#  containers:
-#    - name: mysql
-#      image: mysql:5.7
-#      env:
-#        - name: MYSQL_ROOT_PASSWORD
-#          value: "ExpenseApp@1"
-#
-#---
-#apiVersion: v1
-#kind: Service
-#metadata:
-#  name: mysql
-#spec:
-#  selector:
-#    app: mysql
-#  ports:
-#    - protocol: TCP
-#      port: 3306
-#      targetPort: 3306
-#---
-#apiVersion: batch/v1
-#kind: Job
-#metadata:
-#  name: schema
-#spec:
-#  template:
-#    spec:
-#      imagePullSecrets:
-#        - name: aws-ecr
-#      restartPolicy: Never
-#      containers:
-#        - name: schema
-#          image: 851725420695.dkr.ecr.us-east-1.amazonaws.com/expensc-schema-load:5.0.2
-#          env:
-#            - name: DBHOST
-#              value: mysql
-#            - name: DBPASS
-#              value: "ExpenseApp@1"
-#            - name: DBUSER
-#              value: root
-#            - name: COMPONENT
-#              value: backend
+  imagePullSecrets:
+    - name: aws-ecr
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+spec:
+  type: NodePort
+  selector:
+    app: frontend
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: backend
+  labels:
+    app: backend
+spec:
+  containers:
+    - name: backend
+      image: 851725420695.dkr.ecr.us-east-1.amazonaws.com/backend:20.0.0
+      env:
+        - name: DB_HOST
+          value: mysql
+  imagePullSecrets:
+    - name: aws-ecr
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+spec:
+  selector:
+    app: backend
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mysql
+  labels:
+    app: mysql
+spec:
+  containers:
+    - name: mysql
+      image: mysql:5.7
+      env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: "ExpenseApp@1"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql
+spec:
+  selector:
+    app: mysql
+  ports:
+    - protocol: TCP
+      port: 3306
+      targetPort: 3306
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: schema
+spec:
+  template:
+    spec:
+      imagePullSecrets:
+        - name: aws-ecr
+      restartPolicy: Never
+      containers:
+        - name: schema
+          image: 851725420695.dkr.ecr.us-east-1.amazonaws.com/expensc-schema-load:5.0.2
+          env:
+            - name: DBHOST
+              value: mysql
+            - name: DBPASS
+              value: "ExpenseApp@1"
+            - name: DBUSER
+              value: root
+            - name: COMPONENT
+              value: backend
