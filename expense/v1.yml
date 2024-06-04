@@ -8,21 +8,21 @@ spec:
   containers:
     - name: frontend
       image: 851725420695.dkr.ecr.us-east-1.amazonaws.com/frontend:20.0.0
-  imagePullSecrets:
-    - name: aws-ecr
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: frontend
-spec:
-  type: NodePort
-  selector:
-    app: frontend
-  ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 80
+#  imagePullSecrets:
+#    - name: aws-ecr
+#---
+#apiVersion: v1
+#kind: Service
+#metadata:
+#  name: frontend
+#spec:
+#  type: NodePort
+#  selector:
+#    app: frontend
+#  ports:
+#    - protocol: TCP
+#      port: 80
+#      targetPort: 80
 #---
 #
 #apiVersion: v1
